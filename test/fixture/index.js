@@ -18,11 +18,9 @@ exports.start = function (callback) {
   };
 
   var app = express();
-
-  app.configure(function(){
-    this.use(express.json());
-    this.use(express.urlencoded());
-  });
+  var bodyParser = require('body-parser');
+  app.use(bodyParser.urlencoded());
+  app.use(bodyParser.json());
 
   app.post('/login', function (req, res) {
     var profile = {
